@@ -1,0 +1,99 @@
+---
+title: "18 oktober"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+library(nycflights13)
+library(dplyr)
+library(tidyverse)
+library(ggplot2)
+```
+
+```{r}
+diamonds %>% 
+  ggplot(mapping = aes(x = carat, y = price)) +
+  geom_point(size = 0.2)
+```
+```{r}
+diamonds %>% 
+  filter(carat <= 2) %>% 
+  ggplot(mapping = aes(x = carat, y = price)) +
+  geom_boxplot(mapping = aes(group = cut_width(carat, 0.1)))
+```
+
+```{r}
+data("gapminder")
+
+View(gapminder)
+```
+
+```{r}
+
+head(airlines, n = 3)
+```
+
+```{r}
+flights %>% 
+  select(year:day, carrier, everything()) %>% 
+  group_by(carrier) %>% 
+  summarise(first(dep_time)) %>% 
+  
+  head(, n= 3)
+```
+```{r}
+head(weather, n=3)
+```
+
+```{r}
+library(tidyverse)
+library(modelr)
+View(heights)
+```
+
+```{r}
+summary(heights)
+```
+
+```{r}
+heights$heightInt <- cut(heights$height, breaks = 8)
+summary(heights[,1:4])
+```
+
+```{r}
+library(tidyverse)
+library(modelr)
+library(hrbrthemes)
+
+summary(heights)
+
+
+
+
+
+Plot1 <- hist(heights$income , main = "Histogram-Income" , xlab = "Income", ylab = "Frequency")
+Plot1
+
+
+
+
+plot3 <- ggplot(heights, aes(height, income))
+plot3 + geom_jitter(width = .5, size=1) +
+  scale_y_sqrt() + 
+  ylim(0,900000) +
+  labs(subtitle="Removed 871 rows containing missing values (geom_points)", 
+       y="Income", 
+       x="Height", 
+       title="Heights dataset") +
+       theme_classic()
+
+
+
+
+```
+
