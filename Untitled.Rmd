@@ -1,6 +1,7 @@
 ---
 title: "18 oktober"
 output: html_document
+lang: no-NB
 ---
 
 ```{r setup, include=FALSE}
