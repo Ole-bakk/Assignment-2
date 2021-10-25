@@ -1,0 +1,78 @@
+---
+title: "Er det høyde som bestemmer inntekt?"
+output: html_document
+lang: no-NB
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(nycflights13)
+library(dplyr)
+library(tidyverse)
+library(modelr)
+library(ggplot2)
+library(hrbrthemes)
+```
+
+
+#Introduksjon
+
+
+
+
+#Litteraturgjennomgang
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+```{r}
+View(heights)
+```
+
+```{r}
+summary(heights)
+```
+
+```{r}
+heights$heightInt <- cut(heights$height, breaks = 8)
+summary(heights[,1:4])
+```
+
+```{r}
+Plot1 <- hist(heights$income , main = "Histogram-Income" , xlab = "Income", ylab = "Frequency")
+Plot1
+
+plot3 <- ggplot(heights, aes(height, income))
+plot3 + geom_jitter(width = .5, size=1) +
+  scale_y_sqrt() + 
+  ylim(0,900000) +
+  labs(subtitle="Removed 871 rows containing missing values (geom_points)", 
+       y="Income", 
+       x="Height", 
+       title="Heights dataset") +
+       theme_classic()
+
+```
+
+
