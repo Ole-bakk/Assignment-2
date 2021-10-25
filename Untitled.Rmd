@@ -98,3 +98,9 @@ plot3 + geom_jitter(width = .5, size=1) +
 
 ```
 
+```{r}
+sum(heights$income == 0)
+```
+
+
+
