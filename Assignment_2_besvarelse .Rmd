@@ -45,6 +45,32 @@ I studien "*The Effect of Physical Height on Workplace Success and Income: Preli
 # Datasattet
 Som nevnt bruker vi datasettet **heights** i pakken **modelr**, men siden dataene er amerikanske, er måleenhetene av amerikanske verdier. Vi konverterer dermed først til det metriske systemet som vi bruker i Norge slik at resultatene av analysene skal gi bedre forståelse. I tillegg konverterer vi inntekten fra dollar til norske kroner.
 
+```{r}
+#skifter navn på datasettet, fra heights til hoyde
+hoyde <- heights
+```
+
+```{r}
+#konverterer måleenhetene og valutaen
+hoyde$hoyde_cm <- hoyde$height*2.54
+hoyde$vekt_kg <- hoyde$weight*0.45359237
+hoyde$inntekt_kr <- hoyde$income*8.37 #Gjennomsnittlig valutakurs i uke 42, 2021.
+hoyde$bmi <- I(hoyde$vekt_kg/(hoyde$hoyde_cm)^2*(10000))
+```
+
+
+# Beskrivende statistikk
+
+Denne delen vet jeg vertfall at Ole Alexander har gjort.
+
+
+# EDA
+
+Tror Ole Alexander har gjort dette også.
+
+
+# Regresjonsanalyse
+
 
 
 
