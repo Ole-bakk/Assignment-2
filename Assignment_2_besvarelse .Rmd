@@ -3,8 +3,8 @@ title: "Er det høyde som bestemmer inntekt?"
 author: "Ole Alexander Bakkevik & Sindre M. Espedal"
 subtitle: Assignment 2 - MSB 105
 output:
-  html_document: default
   pdf_document: default
+  html_document: default
 lang: no-NB
 bibliography: OAB_SME_ASS_2.bib
 csl: apa-no-ampersand.csl
@@ -26,17 +26,31 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduksjon
 
-I dette assignmentet skal vi besvare på problemstillingen "*er det høyde
-som bestemmer inntekt?*". 
+I dette assignmentet skal vi besvare på problemstillingen "*er det høyde som bestemmer inntekt?*". 
 Vi benytter datasettet **heights** i pakken **modelr** for å svare på problemstillingen.
 
 # Litteraturgjennomgang
 
 Det argumenteres for at fysiske egenskaper spiller en sentral rolle i interaksjoner og resultater i arbeidslivet og det er aktiv litteratur som fokuserer på hvordan attraktivitet, vekt og kroppsbilde påvirker interaksjoner og resultater på arbeidsplassen [@judge2004]. For eksempel høyere individer vurderes som mer overbevisende [@young1996] og mer attraktive som kamerater [@freedman1980].
 
-I studien "*The Effect of Physical Height on Workplace Success and Income: Preliminary Test of a Theoretical Model*" fokuserer de på hvilken rolle egenskapen høyde har på suksess i arbeidslivet, målt i inntekt. I studien kommer det frem at resultatene som er presentert i artikkelen tyder tydelig på at fysisk høyde
-påvirker folk karrier og interaksjoner på arbeidsplassen og er derfor
-verdig til fortsatt vitenskapelig undersøkelse [@judge2004].
+Hensley noterte seg at oppfatningen av at høyere individer er på en eller annen måte mer kapable, dyktige eller mer kompetente ser ut til å stemme [@hensley1993]. Denne påstanden kan styrkes i det Lester og Sheehan fant ut at sjefene sin forventning var at korte politifolk skulle motta flere klager, forårsake flere displinære problemer og skape dårligere moral enn det høyere politifolk ville gjort [@lester1980].
+
+Studier har vist at folk oppfatter verdifulle ting som større enn mindre verdifulle ting; for eksempel oppfattes mynter som er større enn pappskiver med identisk diameter [@judge2004]. Denne skjevheten strekker seg også til vurderingen om individers høyde og verdsettelse.
+
+Dette styrkes gjennom en studie av kanadiske velgere, der de viste at etter valget i 1988, bedømte velgerne vinneren (Brian Mulroney) til å være høyere enn før valget. I tillegg bedømte velgerne taperne til å være kortere enn før valget [@judge2004]. Høyde er også en metafor for betydningen av makt [@judge2004] og er ofte brukt som en "*heuristikk for dominans*" [@young1998].
+I språket er også høyde av sosial verdi. Når en person er høyt aktet, kan han beskrives som en "*stor mann*", og vi "*Ser opp*" til og beundrer de høye individene [@frieze1990].
+
+I studien "*The Effect of Physical Height on Workplace Success and Income: Preliminary Test of a Theoretical Model*" fokuserer de på hvilken rolle egenskapen høyde har på suksess i arbeidslivet. I studien kommer det frem at resultatene som er presentert i artikkelen tyder tydelig på at fysisk høyde påvirker folk karrier og interaksjoner på arbeidsplassen og er derfor verdig til fortsatt vitenskapelig undersøkelse [@judge2004].
+
+# Datasattet
+Som nevnt bruker vi datasettet **heights** i pakken **modelr**, men siden dataene er amerikanske, er måleenhetene av amerikanske verdier. Vi konverterer dermed først til det metriske systemet som vi bruker i Norge slik at resultatene av analysene skal gi bedre forståelse. I tillegg konverterer vi inntekten fra dollar til norske kroner.
+
+
+
+
+
+
+
 
 
 
