@@ -5,12 +5,12 @@ subtitle: Assignment 2 - MSB 105
 output:
   pdf_document: default
   html_document: default
-lang: no-NB
+lang: nb-NO
 bibliography: OAB_SME_ASS_2.bib
 csl: apa-no-ampersand.csl
 ---
 
-```{r setup, message=FALSE, echo = FALSE}
+```{r setup, message = FALSE, echo = FALSE}
 library(dplyr)
 library(tidyverse)
 library(modelr)
@@ -29,6 +29,7 @@ knitr::opts_chunk$set(echo = TRUE)
 I dette assignmentet skal vi besvare på problemstillingen "*er det høyde som bestemmer inntekt?*". 
 Vi benytter datasettet **heights** i pakken **modelr** for å svare på problemstillingen.
 
+
 # Litteraturgjennomgang
 
 Det argumenteres for at fysiske egenskaper spiller en sentral rolle i interaksjoner og resultater i arbeidslivet og det er aktiv litteratur som fokuserer på hvordan attraktivitet, vekt og kroppsbilde påvirker interaksjoner og resultater på arbeidsplassen [@judge2004]. For eksempel høyere individer vurderes som mer overbevisende [@young1996] og mer attraktive som kamerater [@freedman1980].
@@ -41,6 +42,7 @@ Dette styrkes gjennom en studie av kanadiske velgere, der de viste at etter valg
 I språket er også høyde av sosial verdi. Når en person er høyt aktet, kan han beskrives som en "*stor mann*", og vi "*Ser opp*" til og beundrer de høye individene [@frieze1990].
 
 I studien "*The Effect of Physical Height on Workplace Success and Income: Preliminary Test of a Theoretical Model*" fokuserer de på hvilken rolle egenskapen høyde har på suksess i arbeidslivet. I studien kommer det frem at resultatene som er presentert i artikkelen tyder tydelig på at fysisk høyde påvirker folk karrier og interaksjoner på arbeidsplassen og er derfor verdig til fortsatt vitenskapelig undersøkelse [@judge2004].
+
 
 # Datasattet
 Som nevnt bruker vi datasettet **heights** i pakken **modelr**, men siden dataene er amerikanske, er måleenhetene av amerikanske verdier. Vi konverterer dermed først til det metriske systemet som vi bruker i Norge slik at resultatene av analysene skal gi bedre forståelse. I tillegg konverterer vi inntekten fra dollar til norske kroner.
@@ -58,6 +60,21 @@ hoyde$inntekt_kr <- hoyde$income*8.37 #Gjennomsnittlig valutakurs i uke 42, 2021
 hoyde$bmi <- I(hoyde$vekt_kg/(hoyde$hoyde_cm)^2*(10000))
 ```
 
+I tillegg forenkler vi variabelen *marital*. Vi forenkler dette ved å kun benytte gift, eller ikke-gift istedenfor flere alternativer som f.eks *singel, skilt, enke* osv.
+
+```{r}
+hoyde <- hoyde %>% 
+mutate(
+  married = factor(
+case_when(
+marital == 'married' ~ TRUE,
+TRUE ~ FALSE
+) )
+)
+```
+
+Nå er sivistatusen *married* satt som TRUE, og alle andre kategoriene i den nye variabelen er FALSE.
+
 
 # Beskrivende statistikk
 
@@ -67,10 +84,86 @@ Denne delen vet jeg vertfall at Ole Alexander har gjort.
 # EDA
 
 Tror Ole Alexander har gjort dette også.
+Gjør den kort og kjapt uansett.
+
+```{r}
+#Histogram av variabelen inntekt_kr
+ggplot(aes(x = inntekt_kr), data = hoyde) + geom_histogram()
+```
+
+Uteliggerne til høyre skyldes at det er noen få som tjener veldig mye. Disse er summert sammen og utregnet gjennomsnittet på dem. Dette er på grunn av personverns-årsaker.  
+
+```{r}
+#personer uten inntekt
+sum(hoyde$inntekt_kr == 0)
+```
+
+Vi har 1 740 observasjoner som har inntekt lik 0.
 
 
 # Regresjonsanalyse
 
+Alle nye- og forenklede variabler er lagt inn fra før. Det samme gjelder konverteringene.
+
+Den første modellen er en veldig enkel regresjonsmodell som ser kun på hvordan høyden påvirker inntekten.
+
+```{r}
+modell_1 = "inntekt_kr ~ hoyde_cm"
+lm_1 <- lm(modell_1, data = hoyde)
+  summary(lm_1)
+```
+
+Ut i fra denne enkle regresjonen i **modell_1** ser vi at hvis vi øker høyden med én ekstra centimeter, så øker årlig lønn med 9825.9kr.
+Den uttrykkes også som signifikant, men forklaringsvariansen er kun på 4,7% som vil si at 95,3% av modellen kan ikke forklares gjennom regresjonen ($u$). Derfor er dette egentlig en veldig dårlig modell.
+
+
+I neste modell legger vi til en ekstra variabel, variabelen *vekt_kg*, for å se hvordan dette påvirker regresjonsmodellen.
+
+```{r}
+modell_2 = "inntekt_kr ~ hoyde_cm + vekt_kg"
+lm_2 <- lm(modell_2, data = hoyde)
+  summary(lm_2)
+```
+
+I **modell_2** påvirker *vekt_kg* negativt på *inntekt_kr*. Hvis *vekt_kg* øker med én ekstra kg, så reduseres årlig *inntekt_kr* 1481.3kr.
+Denne variabelen er også signifikant, men forklaringsvariansen på overkant av 5% indikerer at **modell_2** er også en dårlig modell, ettersom den har en liten forklaring.
+
+
+I **modell_3** legges det til en ytterligere variabel, variabelen *bmi*.
+
+```{r}
+modell_3 = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi"
+lm_3 <- lm(modell_3, data = hoyde)
+  summary(lm_3)
+```
+
+Ut i fra **modell_3** så ser vi at hvis *bmi* øker med én ekstra enhet, så øker årlig *inntekt_kr* med 7834kr.
+
+**modell_3** viser 3 variabler hvor *hoyde_cm* er den eneste signifikante variabelen med et konfidensintervall på 95%. Likevel har forklaringsvariansen hatt en minimal økning på en ellers så svært liten forklaringskraft.
+
+
+I **modell_4** legges variablene *education* og *age* til i regresjonsmodellen.
+
+```{r}
+modell_4 = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + age"
+lm_4 <- lm(modell_4, data = hoyde)
+  summary(lm_4)
+```
+
+**modell_4** viser at *age* påvirker årlig *inntekt_kr* negativt mens *education* har en positiv effekt. variabelen *education* er også svært signifikant. De 2 ekstra variablene øker forklaringskraften betydelig, helt opp til 19,4%. 
+
+
+## Huxreg
+
+Setter opp en **Huxtable** for å vise en oversikt over modell 1, 2 og 3.
+
+```{r}
+huxreg(
+   list("modell_1" = lm_1, "modell_2" = lm_2, "modell_3" = lm_3),
+   error_format = "[{statistic}]",
+   note = "Regresjonstabell 3: {stars}. T statistics in brackets."
+   )
+```
 
 
 
@@ -80,6 +173,13 @@ Tror Ole Alexander har gjort dette også.
 
 
 
+
+
+
+
+
+
+\newpage
 
 # Litteraturliste
 
