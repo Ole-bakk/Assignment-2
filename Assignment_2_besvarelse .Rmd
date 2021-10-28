@@ -1,17 +1,4 @@
 ---
-title: "Er det høyde som bestemmer inntekt?"
-<<<<<<< HEAD
-output: html_document
-lang: no-NB
----
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
-
-```{r}
-library(nycflights13)
-=======
 author: "Ole Alexander Bakkevik & Sindre M. Espedal"
 subtitle: Assignment 2 - MSB 105
 output:
@@ -23,83 +10,19 @@ csl: apa-no-ampersand.csl
 ---
 
 ```{r setup, message = FALSE, echo = FALSE}
->>>>>>> Branch_Intro
 library(dplyr)
 library(tidyverse)
 library(modelr)
 library(ggplot2)
 library(hrbrthemes)
-<<<<<<< HEAD
-```
-
-
-#Introduksjon
-
-
-
-
-
-#Litteraturgjennomgang
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-```{r}
-View(heights)
-```
-
-```{r}
-summary(heights)
-```
-
-```{r}
-heights$heightInt <- cut(heights$height, breaks = 8)
-summary(heights[,1:4])
-```
-
-```{r}
-Plot1 <- hist(heights$income , main = "Histogram-Income" , xlab = "Income", ylab = "Frequency")
-Plot1
-
-plot3 <- ggplot(heights, aes(height, income))
-plot3 + geom_jitter(width = .5, size=1) +
-  scale_y_sqrt() + 
-  ylim(0,900000) +
-  labs(subtitle="Removed 871 rows containing missing values (geom_points)", 
-       y="Income", 
-       x="Height", 
-       title="Heights dataset") +
-       theme_classic()
-
-```
-
-
-=======
+library(car)
 library(huxtable)
 library(knitr)
-library(car)
 library(bibtex)
 options(scipen = 666)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
+
 
 # Introduksjon
 
@@ -258,6 +181,3 @@ huxreg(
 \newpage
 
 # Litteraturliste
-
-
->>>>>>> Branch_Intro
