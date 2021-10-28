@@ -1,6 +1,7 @@
 ---
 title: "Assignment 2"
 output: html_document
+lang: no-NB
 ---
 
 ```{r setup, include=FALSE}
@@ -66,4 +67,10 @@ plot3 + geom_jitter(width = .5, size=1) +
        theme_classic()
 
 ```
+
+```{r}
+sum(heights$income == 0)
+```
+
+
 
