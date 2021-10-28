@@ -20,6 +20,8 @@ library(huxtable)
 library(knitr)
 library(bibtex)
 library(kableExtra)
+library(stargazer) 
+library(AER)
 options(scipen = 666)
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -174,6 +176,21 @@ huxreg(
 ```
 
 
+```{r}
+#Test av koeffisientene samt korrelasjon
+
+coeftest(lm_4, vcov. = vcovHC, type = "HC1")
+
+confint(lm_4)
+
+cor(heights$income,heights$height)
+
+linearHypothesis(modell_4, c("inntekt_kr=0", "hoyde_cm=0", "vekt_kg=0","bmi=0", "education=0", "age=0" ))
+
+
+
+
+```
 
 
 
