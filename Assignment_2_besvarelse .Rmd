@@ -175,10 +175,8 @@ huxreg(
 
 
 
-
-
-
-
+ linearHypothesis(lm4, c("sexfemale = 0", "sexfemale:hoyde_cm = 0","sexfemale:vekt_kg=0", "sexfemale:I(vekt_kg^2)=0", "sexfemale:BMI=0", "sexfemale:I(BMI^2)=0"))
+ 
 
 
 
