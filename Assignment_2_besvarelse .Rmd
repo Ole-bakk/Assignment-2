@@ -1,13 +1,4 @@
 ---
-<<<<<<< HEAD
-title: "Er det høyde som bestemmer inntekt?"
-<<<<<<< HEAD
-output: html_document
-lang: no-NB
----
-
-```{r setup, message = FALSE, echo = FALSE}
-=======
 author: "Ole Alexander Bakkevik & Sindre M. Espedal"
 subtitle: Assignment 2 - MSB 105
 output:
@@ -25,7 +16,6 @@ library(modelr)
 library(ggplot2)
 library(hrbrthemes)
 library(car)
->>>>>>> main
 library(huxtable)
 library(knitr)
 library(bibtex)
@@ -174,10 +164,40 @@ huxreg(
    )
 ```
 
+Variabelen *hoyde_cm* er signifikant gjennom alle tre modellene mens *vekt_kg* er kun signifikant i **modell_2**. Variabelen *hoyde_cm* får også en større påvirkning på *inntekt_kr* når flere variabler legges til.
+Forklaringskraften øker minimalt fra **modell_1**, men den øker ikke mellom **modell_2** og **modell_3**. Forklaringskraften er også veldig liten.
+
+
+## Interaksjon
+
+Denne modellen har en interaksjon på variabelen *sex*, som vil si en modell for kvinner og menn. 
+
+```{r}
+modell_int = "inntekt_kr ~ sex*(hoyde_cm + vekt_kg + I(vekt_kg^2) + bmi + I(bmi^2))"
+lm_int <- lm(modell_int, data = hoyde)
+summary(lm_int)
+```
+
+Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og interaksjonsvariablene ikke er signifikante. 
+
+
+# Residualene
+
+## Endelig modell
 
 
 
 
+
+
+
+
+
+
+
+# Konklusjon
+
+På interaksjonsmodellen var ingen variabler signifikante. Det kan da tenkes at kjønn ikke har noe å si for *inntekt_kr*.
 
 
 
@@ -191,9 +211,3 @@ huxreg(
 \newpage
 
 # Litteraturliste
-<<<<<<< HEAD
-
-
->>>>>>> Branch_Intro
-=======
->>>>>>> main
