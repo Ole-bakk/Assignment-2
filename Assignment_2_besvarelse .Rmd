@@ -83,8 +83,7 @@ Denne delen vet jeg vertfall at Ole Alexander har gjort.
 
 # EDA
 
-Tror Ole Alexander har gjort dette også.
-Gjør den kort og kjapt uansett.
+Illustrasjon over *inntek_kr*. 
 
 ```{r}
 #Histogram av variabelen inntekt_kr
