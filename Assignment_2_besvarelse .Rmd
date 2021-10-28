@@ -19,6 +19,7 @@ library(car)
 library(huxtable)
 library(knitr)
 library(bibtex)
+library(kableExtra)
 options(scipen = 666)
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -51,6 +52,14 @@ Som nevnt bruker vi datasettet **heights** i pakken **modelr**, men siden dataen
 #skifter navn på datasettet, fra heights til hoyde
 hoyde <- heights
 ```
+
+```{r}
+summary(heights[,1:8])
+```
+```{r}
+kable(summary(heights[,1:8]))
+```
+
 
 ```{r}
 #konverterer måleenhetene og valutaen
