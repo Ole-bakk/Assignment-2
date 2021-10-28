@@ -1,28 +1,19 @@
 ---
 title: "Er det høyde som bestemmer inntekt?"
-author: "Ole Alexander Bakkevik & Sindre M. Espedal"
-subtitle: Assignment 2 - MSB 105
-output:
-  pdf_document: default
-  html_document: default
-lang: nb-NO
-bibliography: OAB_SME_ASS_2.bib
-csl: apa-no-ampersand.csl
+<<<<<<< HEAD
+output: html_document
+lang: no-NB
 ---
 
 ```{r setup, message = FALSE, echo = FALSE}
-library(dplyr)
-library(tidyverse)
-library(modelr)
-library(ggplot2)
-library(hrbrthemes)
 library(huxtable)
 library(knitr)
 library(car)
 library(bibtex)
 options(scipen = 666)
-knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_chunk$set(echo = FALSE)
 ```
+
 
 # Introduksjon
 
@@ -183,3 +174,4 @@ huxreg(
 # Litteraturliste
 
 
+>>>>>>> Branch_Intro
