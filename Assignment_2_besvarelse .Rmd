@@ -178,10 +178,34 @@ lm_int <- lm(modell_int, data = hoyde)
 summary(lm_int)
 ```
 
-Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og interaksjonsvariablene ikke er signifikante. 
+Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og interaksjonsvariablene ikke er signifikante.
+
+
+# Hypotesetesting
+
+Vi kjører test av koeffesientene i interaksjonsmodellen mellom kvinner og menn.
+
+```{r}
+linearHypothesis(lm_int, c("sexfemale = 0", "sexfemale:hoyde_cm = 0","sexfemale:vekt_kg=0", "sexfemale:I(vekt_kg^2)=0", "sexfemale:bmi=0", "sexfemale:I(bmi^2)=0"))
+```
+
+F-testen viser et resultat på 12.013.
 
 
 # Residualene
+
+Den endelige modellen.
+
+```{r}
+modell_f = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi" # Fullstending modell
+lm_f <- lm(modell_f, data = hoyde)
+  summary(lm_f)
+```
+
+Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt.
+
+
+
 
 ## Endelig modell
 
