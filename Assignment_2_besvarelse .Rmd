@@ -207,12 +207,6 @@ Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% h�
 
 
 
-## Endelig modell
-
-
-
-
-
 
 
 
