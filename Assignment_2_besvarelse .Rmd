@@ -239,6 +239,11 @@ summary(lm_int)
 
 ```
 
+```{r}
+ggplot(hoyde, aes(x=inntekt_kr, y=hoyde_cm)) + 
+geom_point( data= select(hoyde, hoyde_cm, inntekt_kr),colour = "grey80",size = 0.3)
+```
+
 
 # Konklusjon
 
