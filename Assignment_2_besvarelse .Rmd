@@ -85,14 +85,6 @@ hoyde <- heights
 ```
 
 ```{r}
-summary(hoyde[,1:8])
-```
-
-```{r}
-kable(summary(hoyde[,1:8]))
-```
-
-```{r}
 #konverterer måleenhetene og valutaen
 hoyde$hoyde_cm <- hoyde$height*2.54
 hoyde$vekt_kg <- hoyde$weight*0.45359237
@@ -117,6 +109,16 @@ TRUE ~ FALSE
 
 Nå er sivistatusen *married* satt som TRUE, og alle andre kategoriene i
 den nye variabelen er FALSE. Da måles det kun om man er gift eller ikke.
+
+
+```{r}
+summary(hoyde[,1:8])
+```
+
+```{r}
+kable(summary(hoyde[,1:8]))
+```
+
 
 # Beskrivende statistikk
 
@@ -386,6 +388,8 @@ Variabelen *hoyde_cm* blir usignifikant med det begrensede datasettet
 ved å fjerne de 2% høyeste inntektene og de som har null i inntekt.
 
 Vi kan dermed **ikke** påstå at det er høyde som bestemmer inntekt.
+
+Resultatene viser helt klart at *education*, *afqt* og *sex* er de mest signifikante variablene som påvirker inntekt. 
 
 \newpage
 
