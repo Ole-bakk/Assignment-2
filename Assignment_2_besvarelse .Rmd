@@ -87,7 +87,7 @@ Nå er sivistatusen *married* satt som TRUE, og alle andre kategoriene i den nye
 
 # Beskrivende statistikk
 
-Denne delen vet jeg vertfall at Ole Alexander har gjort.
+
 
 
 # EDA
@@ -173,6 +173,46 @@ huxreg(
    )
 ```
 
+Variabelen *hoyde_cm* er signifikant gjennom alle tre modellene mens *vekt_kg* er kun signifikant i **modell_2**. Variabelen *hoyde_cm* får også en større påvirkning på *inntekt_kr* når flere variabler legges til.
+Forklaringskraften øker minimalt fra **modell_1**, men den øker ikke mellom **modell_2** og **modell_3**. Forklaringskraften er også veldig liten.
+
+
+## Interaksjon
+
+Denne modellen har en interaksjon på variabelen *sex*, som vil si en modell for kvinner og menn. 
+
+```{r}
+modell_int = "inntekt_kr ~ sex*(hoyde_cm + vekt_kg + I(vekt_kg^2) + bmi + I(bmi^2))"
+lm_int <- lm(modell_int, data = hoyde)
+summary(lm_int)
+```
+
+Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og interaksjonsvariablene ikke er signifikante.
+
+
+# Hypotesetesting
+
+Vi kjører test av koeffesientene i interaksjonsmodellen mellom kvinner og menn.
+
+```{r}
+linearHypothesis(lm_int, c("sexfemale = 0", "sexfemale:hoyde_cm = 0","sexfemale:vekt_kg=0", "sexfemale:I(vekt_kg^2)=0", "sexfemale:bmi=0", "sexfemale:I(bmi^2)=0"))
+```
+
+F-testen viser et resultat på 12.013.
+
+
+# Residualene
+
+I den endelige modellen legges variablene *education*, *married*, *sex* og *afqt* til i tillegg. Variabelen *age* legges ikke til fordi aldersspennet er bare mellom 9 år, noe som ikke er særlig stor variasjon.
+Fullstendige modellen blir dermed seende slik ut:
+
+```{r}
+modell_f = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + married + afqt + sex" # Fullstending modell
+lm_f <- lm(modell_f, data = hoyde)
+  summary(lm_f)
+```
+
+Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt. 
 
 
  linearHypothesis(lm4, c("sexfemale = 0", "sexfemale:hoyde_cm = 0","sexfemale:vekt_kg=0", "sexfemale:I(vekt_kg^2)=0", "sexfemale:BMI=0", "sexfemale:I(BMI^2)=0"))
@@ -185,7 +225,9 @@ summary(lm_int)
 
 
 
+# Konklusjon
 
+På interaksjonsmodellen var ingen variabler signifikante. Det kan da tenkes at kjønn ikke har noe å si for *inntekt_kr*.
 
 \newpage
 
