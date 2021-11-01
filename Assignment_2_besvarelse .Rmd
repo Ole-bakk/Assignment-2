@@ -20,6 +20,8 @@ library(huxtable)
 library(knitr)
 library(bibtex)
 library(kableExtra)
+library(stargazer) 
+library(AER)
 options(scipen = 666)
 knitr::opts_chunk$set(echo = FALSE)
 ```
@@ -214,6 +216,27 @@ lm_f <- lm(modell_f, data = hoyde)
 
 Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt. 
 
+```{r}
+#Test av koeffisientene samt korrelasjon
+
+coeftest(lm_4, vcov. = vcovHC, type = "HC1")
+
+confint(lm_4)
+
+cor(heights$income,heights$height)
+
+linearHypothesis(lm_int, c("sexfemale = 0", "sexfemale:hoyde_cm = 0" + "sexfemale:vekt_kg=0" +  "sexfemale:I(vekt_kg^2) = 0" + "sexfemale:bmi = 0" + "sexfemale:I(bmi^2)) = 0" ))
+
+modell_4 = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + age"
+lm_4 <- lm(modell_4, data = hoyde)
+  summary(lm_4)
+
+modell_int = "inntekt_kr ~ sex*(hoyde_cm + vekt_kg + I(vekt_kg^2) + bmi + I(bmi^2))"
+lm_int <- lm(modell_int, data = hoyde)
+summary(lm_int)
+
+
+```
 
  linearHypothesis(lm4, c("sexfemale = 0", "sexfemale:hoyde_cm = 0","sexfemale:vekt_kg=0", "sexfemale:I(vekt_kg^2)=0", "sexfemale:BMI=0", "sexfemale:I(BMI^2)=0"))
  
