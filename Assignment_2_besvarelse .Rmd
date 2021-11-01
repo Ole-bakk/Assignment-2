@@ -193,6 +193,7 @@ Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og interaksjonsvariable
 
 
 # Hypotesetesting
+## Test av koeffisientene samt korrelasjon
 
 Vi kjører test av koeffesientene i interaksjonsmodellen mellom kvinner og menn.
 
@@ -214,7 +215,44 @@ lm_f <- lm(modell_f, data = hoyde)
   summary(lm_f)
 ```
 
-Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt. 
+Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt.
+
+```{r}
+hoyde_b <- hoyde %>%
+  filter(inntekt_kr < 1500000, inntekt_kr > 1)
+```
+
+```{r}
+modell_f = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + married + afqt + sex" # Fullstending modell
+lm_f <- lm(modell_f, data = hoyde_b)
+  summary(lm_f)
+```
+
+
+Legger til residualene fra endelig modell fra datasettet
+
+```{r}
+hoyde_b <- hoyde %>% 
+  add_residuals(lm_f)
+hoyde_b %>% 
+  head(5)
+```
+
+
+
+
+
+
+
+hoyde_begr <- hoyde %>% 
+  add_residuals(lm5)
+  hoyde_begr %>% 
+    head(n =10)
+
+
+# Hypotesetesting
+
+## Koeffisient & korrelasjon
 
 ```{r}
 #Test av koeffisientene samt korrelasjon
