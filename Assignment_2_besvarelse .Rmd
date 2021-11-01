@@ -78,7 +78,7 @@ Nå er sivistatusen *married* satt som TRUE, og alle andre kategoriene i den nye
 
 # Beskrivende statistikk
 
-Denne delen vet jeg vertfall at Ole Alexander har gjort.
+
 
 
 # EDA
@@ -194,15 +194,18 @@ F-testen viser et resultat på 12.013.
 
 # Residualene
 
-Den endelige modellen.
+I den endelige modellen legges variablene *education*, *married*, *sex* og *afqt* til i tillegg. Variabelen *age* legges ikke til fordi aldersspennet er bare mellom 9 år, noe som ikke er særlig stor variasjon.
+Fullstendige modellen blir dermed seende slik ut:
 
 ```{r}
-modell_f = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi" # Fullstending modell
+modell_f = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + married + afqt + sex" # Fullstending modell
 lm_f <- lm(modell_f, data = hoyde)
   summary(lm_f)
 ```
 
-Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt.
+Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt. 
+
+
 
 
 
@@ -216,15 +219,6 @@ Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% h�
 # Konklusjon
 
 På interaksjonsmodellen var ingen variabler signifikante. Det kan da tenkes at kjønn ikke har noe å si for *inntekt_kr*.
-
-
-
-
-
-
-
-
-
 
 \newpage
 
