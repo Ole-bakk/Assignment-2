@@ -185,7 +185,7 @@ confint(lm_4)
 
 cor(heights$income,heights$height)
 
-linearHypothesis(lm_int, c("sexfemale = 0", "" "sexfemale:hoyde_cm = 0" + vekt_kg + I(vekt_kg^2) + bmi + I(bmi^2))" ))
+linearHypothesis(lm_int, c("sexfemale = 0", "sexfemale:hoyde_cm = 0" + "sexfemale:vekt_kg=0" +  "sexfemale:I(vekt_kg^2) = 0" + "sexfemale:bmi = 0" + "sexfemale:I(bmi^2)) = 0" ))
 
 modell_4 = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + age"
 lm_4 <- lm(modell_4, data = hoyde)
