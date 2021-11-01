@@ -352,6 +352,9 @@ lm_f <- lm(modell_f, data = hoyde_b)
   summary(lm_f)
 ```
 
+Ved å fjerne 2% høyeste inntekt og de som har null i inntekt mister *hoyde_cm* sin signifikans.
+
+
 Legger til residualene fra endelig modell fra datasettet
 
 ```{r}
@@ -361,21 +364,7 @@ hoyde_b %>%
   head(5)
 ```
 
-<<<<<<< HEAD
-=======
 
-
-
-
-
-
-
-
-# Hypotesetesting
-
-## Koeffisient & korrelasjon
-
->>>>>>> c334874cb25ab782bac11969383383d3d79ef7e8
 ```{r}
 ggplot(data = hoyde_b, mapping = aes(x = hoyde_cm, y = inntekt_kr)) +
   geom_point(
@@ -385,11 +374,6 @@ ggplot(data = hoyde_b, mapping = aes(x = hoyde_cm, y = inntekt_kr)) +
     size = 0.3
   ) +
   facet_grid(sex ~ factor(married, labels = c("not married", "married")))
-```
-
-```{r}
-ggplot(hoyde, aes(x=inntekt_kr, y=hoyde_cm)) + 
-geom_point()
 ```
 
 
