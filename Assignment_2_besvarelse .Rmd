@@ -29,55 +29,34 @@ knitr::opts_chunk$set(echo = FALSE)
 
 # Introduksjon
 
-I dette assignmentet skal vi besvare på problemstillingen "*er det høyde
-som bestemmer inntekt?*". Vi benytter datasettet **heights** i pakken
-**modelr** for å svare på problemstillingen.
+I dette assignmentet skal vi besvare på problemstillingen "*er det høyde som bestemmer inntekt?*".
+Vi benytter datasettet **heights** i pakken **modelr** for å svare på problemstillingen.
 
 # Litteraturgjennomgang
 
-Det argumenteres for at fysiske egenskaper spiller en sentral rolle i
-interaksjoner og resultater i arbeidslivet og det er aktiv litteratur
-som fokuserer på hvordan attraktivitet, vekt og kroppsbilde påvirker
-interaksjoner og resultater på arbeidsplassen [@judge2004]. For eksempel
-høyere individer vurderes som mer overbevisende [@young1996] og mer
-attraktive som kamerater [@freedman1980].
+Det argumenteres for at fysiske egenskaper spiller en sentral rolle i interaksjoner og resultater i arbeidslivet og det er aktiv litteratur som fokuserer på hvordan attraktivitet, vekt og kroppsbilde påvirker interaksjoner og resultater på arbeidsplassen [@judge2004].
+For eksempel høyere individer vurderes som mer overbevisende [@young1996] og mer attraktive som kamerater [@freedman1980].
 
-Hensley noterte seg at oppfatningen av at høyere individer er på en
-eller annen måte mer kapable, dyktige eller mer kompetente ser ut til å
-stemme [@hensley1993]. Denne påstanden kan styrkes i det Lester og
-Sheehan fant ut at sjefene sin forventning var at korte politifolk
-skulle motta flere klager, forårsake flere displinære problemer og skape
-dårligere moral enn det høyere politifolk ville gjort [@lester1980].
+Hensley noterte seg at oppfatningen av at høyere individer er på en eller annen måte mer kapable, dyktige eller mer kompetente ser ut til å stemme [@hensley1993].
+Denne påstanden kan styrkes i det Lester og Sheehan fant ut at sjefene sin forventning var at korte politifolk skulle motta flere klager, forårsake flere displinære problemer og skape dårligere moral enn det høyere politifolk ville gjort [@lester1980].
 
-Studier har vist at folk oppfatter verdifulle ting som større enn mindre
-verdifulle ting; for eksempel oppfattes mynter som er større enn
-pappskiver med identisk diameter [@judge2004]. Denne skjevheten strekker
-seg også til vurderingen om individers høyde og verdsettelse.
+Studier har vist at folk oppfatter verdifulle ting som større enn mindre verdifulle ting; for eksempel oppfattes mynter som er større enn pappskiver med identisk diameter [@judge2004].
+Denne skjevheten strekker seg også til vurderingen om individers høyde og verdsettelse.
 
-Dette styrkes gjennom en studie av kanadiske velgere, der de viste at
-etter valget i 1988, bedømte velgerne vinneren (Brian Mulroney) til å
-være høyere enn før valget. I tillegg bedømte velgerne taperne til å
-være kortere enn før valget [@judge2004]. Høyde er også en metafor for
-betydningen av makt [@judge2004] og er ofte brukt som en "*heuristikk
-for dominans*" [@young1998]. I språket er også høyde av sosial verdi.
-Når en person er høyt aktet, kan han beskrives som en "*stor mann*", og
-vi "*Ser opp*" til og beundrer de høye individene [@frieze1990].
+Dette styrkes gjennom en studie av kanadiske velgere, der de viste at etter valget i 1988, bedømte velgerne vinneren (Brian Mulroney) til å være høyere enn før valget.
+I tillegg bedømte velgerne taperne til å være kortere enn før valget [@judge2004].
+Høyde er også en metafor for betydningen av makt [@judge2004] og er ofte brukt som en "*heuristikk for dominans*" [@young1998].
+I språket er også høyde av sosial verdi.
+Når en person er høyt aktet, kan han beskrives som en "*stor mann*", og vi "*Ser opp*" til og beundrer de høye individene [@frieze1990].
 
-I studien "*The Effect of Physical Height on Workplace Success and
-Income: Preliminary Test of a Theoretical Model*" fokuserer de på
-hvilken rolle egenskapen høyde har på suksess i arbeidslivet. I studien
-kommer det frem at resultatene som er presentert i artikkelen tyder
-tydelig på at fysisk høyde påvirker folk karrier og interaksjoner på
-arbeidsplassen og er derfor verdig til fortsatt vitenskapelig
-undersøkelse [@judge2004].
+I studien "*The Effect of Physical Height on Workplace Success and Income: Preliminary Test of a Theoretical Model*" fokuserer de på hvilken rolle egenskapen høyde har på suksess i arbeidslivet.
+I studien kommer det frem at resultatene som er presentert i artikkelen tyder tydelig på at fysisk høyde påvirker folk karrier og interaksjoner på arbeidsplassen og er derfor verdig til fortsatt vitenskapelig undersøkelse [@judge2004].
 
 # Datasettet
 
-Som nevnt bruker vi datasettet **heights** i pakken **modelr**, men
-siden dataene er amerikanske, er måleenhetene av amerikanske verdier. Vi
-konverterer dermed først til det metriske systemet som vi bruker i Norge
-slik at resultatene av analysene skal gi bedre forståelse. I tillegg
-konverterer vi inntekten fra dollar til norske kroner.
+Som nevnt bruker vi datasettet **heights** i pakken **modelr**, men siden dataene er amerikanske, er måleenhetene av amerikanske verdier.
+Vi konverterer dermed først til det metriske systemet som vi bruker i Norge slik at resultatene av analysene skal gi bedre forståelse.
+I tillegg konverterer vi inntekten fra dollar til norske kroner.
 
 ```{r}
 #skifter navn på datasettet, fra heights til hoyde
@@ -92,9 +71,8 @@ hoyde$inntekt_kr <- hoyde$income*8.37 #Gjennomsnittlig valutakurs i uke 42, 2021
 hoyde$bmi <- I(hoyde$vekt_kg/(hoyde$hoyde_cm)^2*(10000))
 ```
 
-I tillegg forenkler vi variabelen *marital*. Vi forenkler dette ved å
-kun benytte gift, eller ikke-gift istedenfor flere alternativer som
-f.eks *singel, skilt, enke* osv.
+I tillegg forenkler vi variabelen *marital*.
+Vi forenkler dette ved å kun benytte gift, eller ikke-gift istedenfor flere alternativer som f.eks *singel, skilt, enke* osv.
 
 ```{r}
 hoyde <- hoyde %>% 
@@ -107,9 +85,8 @@ TRUE ~ FALSE
 )
 ```
 
-Nå er sivistatusen *married* satt som TRUE, og alle andre kategoriene i
-den nye variabelen er FALSE. Da måles det kun om man er gift eller ikke.
-
+Nå er sivistatusen *married* satt som TRUE, og alle andre kategoriene i den nye variabelen er FALSE.
+Da måles det kun om man er gift eller ikke.
 
 ```{r}
 summary(hoyde[,1:8])
@@ -119,11 +96,9 @@ summary(hoyde[,1:8])
 kable(summary(hoyde[,1:8]))
 ```
 
-
 # Beskrivende statistikk
 
-Variablene i dattasettet **heights**, samt verdiene og målingene er
-hentet fra helpfunksjonen i R og disse variablene er:
+Variablene i dattasettet **heights**, samt verdiene og målingene er hentet fra helpfunksjonen i R og disse variablene er:
 
 Income
 
@@ -157,8 +132,7 @@ Afqt
 
 -   Prosentscore på en "*IQ test*".
 
-Variablene i datasettet **hoyde** er like, i tillegg til noen ekstra
-variabler:
+Variablene i datasettet **hoyde** er like, i tillegg til noen ekstra variabler:
 
 inntekt_kr
 
@@ -190,8 +164,8 @@ ggplot(aes(x = inntekt_kr), data = hoyde) + geom_histogram()
 ```
 
 Uteliggerne til høyre skyldes at det er noen få som tjener veldig mye.
-Disse er summert sammen og utregnet gjennomsnittet på dem. Dette er på
-grunn av personverns-årsaker.
+Disse er summert sammen og utregnet gjennomsnittet på dem.
+Dette er på grunn av personverns-årsaker.
 
 ```{r}
 #personer uten inntekt
@@ -202,11 +176,10 @@ Vi har 1 740 observasjoner som har inntekt lik 0.
 
 # Regresjonsanalyse
 
-Alle nye- og forenklede variabler er lagt inn fra før. Det samme gjelder
-konverteringene.
+Alle nye- og forenklede variabler er lagt inn fra før.
+Det samme gjelder konverteringene.
 
-Den første modellen er en veldig enkel regresjonsmodell som ser kun på
-hvordan høyden påvirker inntekten.
+Den første modellen er en veldig enkel regresjonsmodell som ser kun på hvordan høyden påvirker inntekten.
 
 ```{r}
 modell_1 = "inntekt_kr ~ hoyde_cm"
@@ -214,14 +187,11 @@ lm_1 <- lm(modell_1, data = hoyde)
   summary(lm_1)
 ```
 
-Ut i fra denne enkle regresjonen i **modell_1** ser vi at hvis vi øker
-høyden med én ekstra centimeter, så øker årlig lønn med 9825.9kr. Den
-uttrykkes også som signifikant, men forklaringsvariansen er kun på 4,7%
-som vil si at 95,3% av modellen kan ikke forklares gjennom regresjonen
-($u$). Derfor er dette egentlig en veldig dårlig modell.
+Ut i fra denne enkle regresjonen i **modell_1** ser vi at hvis vi øker høyden med én ekstra centimeter, så øker årlig lønn med 9825.9kr.
+Den uttrykkes også som signifikant, men forklaringsvariansen er kun på 4,7% som vil si at 95,3% av modellen kan ikke forklares gjennom regresjonen ($u$).
+Derfor er dette egentlig en veldig dårlig modell.
 
-I neste modell legger vi til en ekstra variabel, variabelen *vekt_kg*,
-for å se hvordan dette påvirker regresjonsmodellen.
+I neste modell legger vi til en ekstra variabel, variabelen *vekt_kg*, for å se hvordan dette påvirker regresjonsmodellen.
 
 ```{r}
 modell_2 = "inntekt_kr ~ hoyde_cm + vekt_kg"
@@ -229,11 +199,9 @@ lm_2 <- lm(modell_2, data = hoyde)
   summary(lm_2)
 ```
 
-I **modell_2** påvirker *vekt_kg* negativt på *inntekt_kr*. Hvis
-*vekt_kg* øker med én ekstra kg, så reduseres årlig *inntekt_kr*
-1481.3kr. Denne variabelen er også signifikant, men forklaringsvariansen
-på overkant av 5% indikerer at **modell_2** er også en dårlig modell,
-ettersom den har en liten forklaring.
+I **modell_2** påvirker *vekt_kg* negativt på *inntekt_kr*.
+Hvis *vekt_kg* øker med én ekstra kg, så reduseres årlig *inntekt_kr* 1481.3kr.
+Denne variabelen er også signifikant, men forklaringsvariansen på overkant av 5% indikerer at **modell_2** er også en dårlig modell, ettersom den har en liten forklaring.
 
 I **modell_3** legges det til en ytterligere variabel, variabelen *bmi*.
 
@@ -243,16 +211,12 @@ lm_3 <- lm(modell_3, data = hoyde)
   summary(lm_3)
 ```
 
-Ut i fra **modell_3** så ser vi at hvis *bmi* øker med én ekstra enhet,
-så øker årlig *inntekt_kr* med 7834kr.
+Ut i fra **modell_3** så ser vi at hvis *bmi* øker med én ekstra enhet, så øker årlig *inntekt_kr* med 7834kr.
 
-**modell_3** viser 3 variabler hvor *hoyde_cm* er den eneste
-signifikante variabelen med et konfidensintervall på 95%. Likevel har
-forklaringsvariansen hatt en minimal økning på en ellers så svært liten
-forklaringskraft.
+**modell_3** viser 3 variabler hvor *hoyde_cm* er den eneste signifikante variabelen med et konfidensintervall på 95%.
+Likevel har forklaringsvariansen hatt en minimal økning på en ellers så svært liten forklaringskraft.
 
-I **modell_4** legges variablene *education* og *age* til i
-regresjonsmodellen.
+I **modell_4** legges variablene *education* og *age* til i regresjonsmodellen.
 
 ```{r}
 modell_4 = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + age"
@@ -260,10 +224,9 @@ lm_4 <- lm(modell_4, data = hoyde)
   summary(lm_4)
 ```
 
-**modell_4** viser at *age* påvirker årlig *inntekt_kr* negativt mens
-*education* har en positiv effekt. variabelen *education* er også svært
-signifikant. De 2 ekstra variablene øker forklaringskraften betydelig,
-helt opp til 19,4%.
+**modell_4** viser at *age* påvirker årlig *inntekt_kr* negativt mens *education* har en positiv effekt.
+variabelen *education* er også svært signifikant.
+De 2 ekstra variablene øker forklaringskraften betydelig, helt opp til 19,4%.
 
 ## Huxreg
 
@@ -277,17 +240,14 @@ huxreg(
    )
 ```
 
-Variabelen *hoyde_cm* er signifikant gjennom alle tre modellene mens
-*vekt_kg* er kun signifikant i **modell_2**. Variabelen *hoyde_cm* får
-også en større påvirkning på *inntekt_kr* når flere variabler legges
-til. Forklaringskraften øker minimalt fra **modell_1**, men den øker
-ikke mellom **modell_2** og **modell_3**. Forklaringskraften er også
-veldig liten.
+Variabelen *hoyde_cm* er signifikant gjennom alle tre modellene mens *vekt_kg* er kun signifikant i **modell_2**.
+Variabelen *hoyde_cm* får også en større påvirkning på *inntekt_kr* når flere variabler legges til.
+Forklaringskraften øker minimalt fra **modell_1**, men den øker ikke mellom **modell_2** og **modell_3**.
+Forklaringskraften er også veldig liten.
 
 ## Interaksjon
 
-Denne modellen har en interaksjon på variabelen *sex*, som vil si en
-modell for kvinner og menn.
+Denne modellen har en interaksjon på variabelen *sex*, som vil si en modell for kvinner og menn.
 
 ```{r}
 modell_int = "inntekt_kr ~ sex*(hoyde_cm + vekt_kg + I(vekt_kg^2) + bmi + I(bmi^2))"
@@ -295,15 +255,13 @@ lm_int <- lm(modell_int, data = hoyde)
 summary(lm_int)
 ```
 
-Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og
-interaksjonsvariablene ikke er signifikante.
+Vi ser fra regresjonsmodellen at dummyen for *sexfemale* og interaksjonsvariablene ikke er signifikante.
 
 # Hypotesetesting
 
 ## Test av koeffisientene samt korrelasjon
 
-Vi kjører test av koeffesientene i interaksjonsmodellen mellom kvinner
-og menn.
+Vi kjører test av koeffesientene i interaksjonsmodellen mellom kvinner og menn.
 
 ```{r}
 #Test av koeffisientene samt korrelasjon
@@ -326,13 +284,11 @@ lm_int <- lm(modell_int, data = hoyde)
 summary(lm_int)
 ```
 
-
 # Residualene
 
-I den endelige modellen legges variablene *education*, *married*, *sex*
-og *afqt* til i tillegg. Variabelen *age* legges ikke til fordi
-aldersspennet er bare mellom 9 år, noe som ikke er særlig stor
-variasjon. Fullstendige modellen blir dermed seende slik ut:
+I den endelige modellen legges variablene *education*, *married*, *sex* og *afqt* til i tillegg.
+Variabelen *age* legges ikke til fordi aldersspennet er bare mellom 9 år, noe som ikke er særlig stor variasjon.
+Fullstendige modellen blir dermed seende slik ut:
 
 ```{r}
 modell_f = "inntekt_kr ~ hoyde_cm + vekt_kg + bmi + education + married + afqt + sex" # Fullstending modell
@@ -340,8 +296,7 @@ lm_f <- lm(modell_f, data = hoyde)
   summary(lm_f)
 ```
 
-Så kjører vi den fullstendige modellen og begrenser den med å fjerne de
-2% høyeste inntektene og de som har null i inntekt.
+Så kjører vi den fullstendige modellen og begrenser den med å fjerne de 2% høyeste inntektene og de som har null i inntekt.
 
 ```{r}
 hoyde_b <- hoyde %>%
@@ -356,7 +311,6 @@ lm_f <- lm(modell_f, data = hoyde_b)
 
 Ved å fjerne 2% høyeste inntekt og de som har null i inntekt mister *hoyde_cm* sin signifikans.
 
-
 Legger til residualene fra endelig modell fra datasettet
 
 ```{r}
@@ -365,7 +319,6 @@ hoyde_b <- hoyde %>%
 hoyde_b %>% 
   head(5)
 ```
-
 
 ```{r}
 ggplot(data = hoyde_b, mapping = aes(x = hoyde_cm, y = inntekt_kr)) +
@@ -378,18 +331,16 @@ ggplot(data = hoyde_b, mapping = aes(x = hoyde_cm, y = inntekt_kr)) +
   facet_grid(sex ~ factor(married, labels = c("not married", "married")))
 ```
 
-
 # Konklusjon
 
-På interaksjonsmodellen var ingen variabler signifikante. Det kan da
-tenkes at kjønn ikke har noe å si for *inntekt_kr*.
+På interaksjonsmodellen var ingen variabler signifikante.
+Det kan da tenkes at kjønn ikke har noe å si for *inntekt_kr*.
 
-Variabelen *hoyde_cm* blir usignifikant med det begrensede datasettet
-ved å fjerne de 2% høyeste inntektene og de som har null i inntekt.
+Variabelen *hoyde_cm* blir usignifikant med det begrensede datasettet ved å fjerne de 2% høyeste inntektene og de som har null i inntekt.
 
 Vi kan dermed **ikke** påstå at det er høyde som bestemmer inntekt.
 
-Resultatene viser helt klart at *education*, *afqt* og *sex* er de mest signifikante variablene som påvirker inntekt. 
+Resultatene viser helt klart at *education*, *afqt* og *sex* er de mest signifikante variablene som påvirker inntekt.
 
 \newpage
 
