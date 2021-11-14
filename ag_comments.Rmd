@@ -1,0 +1,34 @@
+---
+title: "AG comments"
+output:
+  pdf_document: default
+  html_document:
+    df_print: paged
+---
+
+-   Reproduserbart som både html og pdf på første forsøk. Flott!
+-   La inn referanse for heights. Enkelt å få dem vha. kommandoene `citation()` og `citation(modelr)` i Console.
+-   Se bruk av in-text citation i avsnitt 2 i litteraturgjennomgangen. Gjør at man kan skrive mer direkte.
+-   Om beskrivende statistikk. RMarkdown har definition list som er grei å kjenne til. Nedenfor noen av variablene vha. denne
+
+Income
+
+:   Årlig inntekt.Topp 2% er gjennomsnittet av dem.
+
+Height
+
+:   Høyde, i inches (amerikansk måleenhet)
+
+Weight
+
+:   Vekt, i pounds (amerikansk måleenhet)
+
+Age
+
+:   Alder, i år, mellom 47 og 56
+
+-   Regresjonsanalyse: se argumenterer for bruk av pipe og hvordan denne kan brukes
+-   La en en ekstra regresjonsmodell lm_4b. Viser hvordan vanlig og robust versjon av denne kan vises i huxreg
+-   Viser også hvordan man får robuste standard errors og tester lineærer hypoteser vha se i R (hørte dere hadde lært om dette i økonometri nå)
+-   Avslutter med min personlige favoritt modell. Høyde ser ikke lenger ut til å ha noen betydning for inntekt.
+-   Det var et fint lite paper dere hadde skrevet. Forhåpentligvis har det også gitt litt mer innsikt i økonometriens mange irrganger ;-)
