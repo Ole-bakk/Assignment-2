@@ -217,11 +217,33 @@ pre code {
 <!-- rnb-text-begin -->
 <ul>
 <li>Reproduserbart som både html og pdf på første forsøk. Flott!</li>
-<li></li>
+<li>La inn referanse for heights. Enkelt å få dem vha. kommandoene <code>citation()</code> og <code>citation(modelr)</code> i Console.</li>
+<li>Se bruk av in-text citation i avsnitt 2 i litteraturgjennomgangen. Gjør at man kan skrive mer direkte.</li>
+<li>Om beskrivende statistikk. RMarkdown har definition list som er grei å kjenne til. Nedenfor noen av variablene vha. denne</li>
+</ul>
+<dl>
+<dt>Income</dt>
+<dd><p>Årlig inntekt.Topp 2% er gjennomsnittet av dem.</p>
+</dd>
+<dt>Height</dt>
+<dd><p>Høyde, i inches (amerikansk måleenhet)</p>
+</dd>
+<dt>Weight</dt>
+<dd><p>Vekt, i pounds (amerikansk måleenhet)</p>
+</dd>
+<dt>Age</dt>
+<dd><p>Alder, i år, mellom 47 og 56</p>
+</dd>
+</dl>
+<ul>
+<li>Regresjonsanalyse: se argumenterer for bruk av pipe og hvordan denne kan brukes</li>
+<li>La en en ekstra regresjonsmodell lm_4b. Viser hvordan vanlig og robust versjon av denne kan vises i huxreg</li>
+<li>Viser også hvordan man får robuste standard errors og tester lineærer hypoteser vha se i R (hørte dere hadde lært om dette i økonometri nå)</li>
+<li>Avslutter med min personlige favoritt modell. Høyde ser ikke lenger ut til å ha noen betydning for inntekt.</li>
 </ul>
 <!-- rnb-text-end -->
 
-<div id="rmd-source-code">LS0tCnRpdGxlOiAiQUcgY29tbWVudHMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCi0gICBSZXByb2R1c2VyYmFydCBzb20gYsOlZGUgaHRtbCBvZyBwZGYgcMOlIGbDuHJzdGUgZm9yc8O4ay4gRmxvdHQhCi0gICAK</div>
+<div id="rmd-source-code">LS0tCnRpdGxlOiAiQUcgY29tbWVudHMiCm91dHB1dDogaHRtbF9ub3RlYm9vawotLS0KCi0gICBSZXByb2R1c2VyYmFydCBzb20gYsOlZGUgaHRtbCBvZyBwZGYgcMOlIGbDuHJzdGUgZm9yc8O4ay4gRmxvdHQhCi0gICBMYSBpbm4gcmVmZXJhbnNlIGZvciBoZWlnaHRzLiBFbmtlbHQgw6UgZsOlIGRlbSB2aGEuIGtvbW1hbmRvZW5lIGBjaXRhdGlvbigpYCBvZyBgY2l0YXRpb24obW9kZWxyKWAgaSBDb25zb2xlLgotICAgU2UgYnJ1ayBhdiBpbi10ZXh0IGNpdGF0aW9uIGkgYXZzbml0dCAyIGkgbGl0dGVyYXR1cmdqZW5ub21nYW5nZW4uIEdqw7hyIGF0IG1hbiBrYW4gc2tyaXZlIG1lciBkaXJla3RlLgotICAgT20gYmVza3JpdmVuZGUgc3RhdGlzdGlray4gUk1hcmtkb3duIGhhciBkZWZpbml0aW9uIGxpc3Qgc29tIGVyIGdyZWkgw6Uga2plbm5lIHRpbC4gTmVkZW5mb3Igbm9lbiBhdiB2YXJpYWJsZW5lIHZoYS4gZGVubmUKCkluY29tZQoKOiAgIMOFcmxpZyBpbm50ZWt0LlRvcHAgMiUgZXIgZ2plbm5vbXNuaXR0ZXQgYXYgZGVtLgoKSGVpZ2h0Cgo6ICAgSMO4eWRlLCBpIGluY2hlcyAoYW1lcmlrYW5zayBtw6VsZWVuaGV0KQoKV2VpZ2h0Cgo6ICAgVmVrdCwgaSBwb3VuZHMgKGFtZXJpa2Fuc2sgbcOlbGVlbmhldCkKCkFnZQoKOiAgIEFsZGVyLCBpIMOlciwgbWVsbG9tIDQ3IG9nIDU2CgotICAgUmVncmVzam9uc2FuYWx5c2U6IHNlIGFyZ3VtZW50ZXJlciBmb3IgYnJ1ayBhdiBwaXBlIG9nIGh2b3JkYW4gZGVubmUga2FuIGJydWtlcwotICAgTGEgZW4gZW4gZWtzdHJhIHJlZ3Jlc2pvbnNtb2RlbGwgbG1fNGIuIFZpc2VyIGh2b3JkYW4gdmFubGlnIG9nIHJvYnVzdCB2ZXJzam9uIGF2IGRlbm5lIGthbiB2aXNlcyBpIGh1eHJlZwotICAgVmlzZXIgb2dzw6UgaHZvcmRhbiBtYW4gZsOlciByb2J1c3RlIHN0YW5kYXJkIGVycm9ycyBvZyB0ZXN0ZXIgbGluZcOmcmVyIGh5cG90ZXNlciB2aGEgc2UgaSBSIChow7hydGUgZGVyZSBoYWRkZSBsw6ZydCBvbSBkZXR0ZSBpIMO4a29ub21ldHJpIG7DpSkKLSAgIEF2c2x1dHRlciBtZWQgbWluIHBlcnNvbmxpZ2UgZmF2b3JpdHQgbW9kZWxsLiBIw7h5ZGUgc2VyIGlra2UgbGVuZ2VyIHV0IHRpbCDDpSBoYSBub2VuIGJldHlkbmluZyBmb3IgaW5udGVrdC4K</div>
 
 
 
